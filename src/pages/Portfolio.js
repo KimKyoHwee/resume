@@ -1,8 +1,6 @@
 import React from 'react';
 
-
 const Portfolio = () => {
-
   return (
     <div>
       {/* Canva 프레젠테이션 임베드 */}
@@ -20,6 +18,7 @@ const Portfolio = () => {
         willChange: 'transform'
       }}>
         <iframe
+          title="My Canva Presentation"  // title 속성 추가
           loading="lazy"
           style={{
             position: 'absolute',
