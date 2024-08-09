@@ -1,12 +1,41 @@
-// src/pages/Portfolio.js
 import React from 'react';
+import axios from 'axios';
 
 const Portfolio = () => {
+
   return (
     <div>
-      <h1>My Portfolio</h1>
-      <p>Here are some of the projects I have worked on.</p>
-      {/* 포트폴리오 프로젝트들을 여기에 추가 */}
+      {/* Canva 프레젠테이션 임베드 */}
+      <div style={{
+        position: 'relative',
+        width: '100%',
+        height: 0,
+        paddingTop: '56.25%',
+        paddingBottom: 0,
+        boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+        marginTop: '1.6em',
+        marginBottom: '0.9em',
+        overflow: 'hidden',
+        borderRadius: '8px',
+        willChange: 'transform'
+      }}>
+        <iframe
+          loading="lazy"
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            top: 0,
+            left: 0,
+            border: 'none',
+            padding: 0,
+            margin: 0
+          }}
+          src="https://www.canva.com/design/DAGK6kGDzGI/IYA2R39Vuej2NAnlW4U82g/view?embed"
+          allowFullScreen
+        ></iframe>
+        {/* 나머지 슬라이드들에 대해서도 동일하게 버튼 추가 */}
+      </div>
     </div>
   );
 }

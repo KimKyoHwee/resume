@@ -1,17 +1,24 @@
-// src/pages/Home.js
 import React from 'react';
 import './Home.css';
 import './Introduction.css'; // 자기소개 페이지 스타일
+import profileImage from "../assets/profile.jpg";
 
 const Home = () => {
+  const scrollToIntroduction = () => {
+    const introductionSection = document.querySelector('.introduction');
+    if (introductionSection) {
+      introductionSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="home-content">
-      {/* 첫 화면 */}
+      {/* 첫 화면 - Intro 섹션 */}
       <section className="intro">
         <div className="sectors">
           <div className="sector">
             <h2>About</h2>
-            <p>제 소개 페이지에 와주셔서 감사합니다! 왼쪽의 내비게이션 바에서 제 이력서와 포트폴리오를 확인하실 수 있습니다.</p>
+            <p>제 소개 페이지에 와주셔서 감사합니다!<br></br> 왼쪽의 바에서 제 이력서와 포트폴리오를 확인하실 수 있습니다.</p>
           </div>
           <div className="sector">
             <h2>Resume</h2>
@@ -23,8 +30,11 @@ const Home = () => {
           </div>
         </div>
         <div className="profile-section">
-          <img src="path_to_your_profile_image.jpg" alt="Profile" className="profile-image" />
-          <h1>KYOHWEE KIM WEBSITE</h1>
+          <img src={profileImage} alt="Profile" className="profile-image" />
+          <h1>KYOHWEE KIM <br></br>WEBSITE</h1>
+          <button className="scroll-button" onClick={scrollToIntroduction}>
+            Scroll Down
+          </button>
         </div>
       </section>
 
