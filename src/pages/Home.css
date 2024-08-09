@@ -1,0 +1,66 @@
+/* src/pages/Home.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.home-content {
+  margin-left: 40px; /* 네비게이션 바의 너비에 맞게 여백 설정 */
+  padding: 20px;
+}
+
+.intro {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sectors {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sector {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sector h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.sector p {
+  font-size: 16px;
+}
+
+.profile-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-section h1 {
+  font-size: 24px;
+  margin-top: 10px;
+  color: #333;
+}

@@ -1,0 +1,38 @@
+/* src/pages/Introduction.css */
+.introduction {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    background-color: #f5f5f5;
+  }
+  
+  .page-one {
+    background-color: #e74c3c; /* 첫 번째 자기소개 페이지 배경색 */
+    color: white;
+  }
+  
+  .page-two {
+    background-color: #3498db; /* 두 번째 자기소개 페이지 배경색 */
+    color: white;
+  }
+  
+  .page-three {
+    background-color: #2ecc71; /* 세 번째 자기소개 페이지 배경색 */
+    color: white;
+  }
+  
+  .introduction h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .introduction p {
+    font-size: 24px;
+    max-width: 800px;
+    line-height: 1.6;
+  }
+  
