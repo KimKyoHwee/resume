@@ -1,40 +1,44 @@
 import React from 'react';
+import './Portfolio.css';
+import ppt1 from "../assets/ppt1.jpg";
+import ppt2 from "../assets/ppt2.jpg";
+import ppt3 from "../assets/ppt3.jpg";
+import ppt4 from "../assets/ppt4.jpg";
+import ppt5 from "../assets/ppt5.jpg";
+import ppt6 from "../assets/ppt6.jpg";
+import ppt7 from "../assets/ppt7.jpg";
+import ppt8 from "../assets/ppt8.jpg";
+import ppt9 from "../assets/ppt9.jpg";
+
+const images = [
+  ppt1, ppt2, ppt3, ppt4, ppt5, ppt6, ppt7, ppt8, ppt9
+];
 
 const Portfolio = () => {
   return (
-    <div>
-      {/* Canva 프레젠테이션 임베드 */}
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        height: 0,
-        paddingTop: '56.25%',
-        paddingBottom: 0,
-        boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
-        marginTop: '1.6em',
-        marginBottom: '0.9em',
-        overflow: 'hidden',
-        borderRadius: '8px',
-        willChange: 'transform'
-      }}>
-        <iframe
-          title="My Canva Presentation"  // title 속성 추가
-          loading="lazy"
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            top: 0,
-            left: 0,
-            border: 'none',
-            padding: 0,
-            margin: 0
-          }}
-          src="https://www.canva.com/design/DAGK6kGDzGI/IYA2R39Vuej2NAnlW4U82g/view?embed"
-          allowFullScreen
-        ></iframe>
-        {/* 나머지 슬라이드들에 대해서도 동일하게 버튼 추가 */}
-      </div>
+    <div className="portfolio-content">
+      {images.map((src, index) => (
+        <section key={index} className="portfolio-section">
+          <div className="portfolio-image-container">
+            <img src={src} alt={`Slide ${index + 1}`} className="portfolio-image" />
+            {/* 왼쪽 상단의 버튼 */}
+            <button className="top-left-button" onClick={() => alert(`Button on Page ${index + 1} clicked!`)}>
+              Action Button
+            </button>
+            {/* 오른쪽 상단의 다음 페이지로 가는 버튼 */}
+            {index < images.length - 1 && (
+              <button className="top-right-button" onClick={() => {
+                const nextSection = document.querySelector(`.portfolio-section:nth-child(${index + 2})`);
+                if (nextSection) {
+                  nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}>
+                Scroll Down
+              </button>
+            )}
+          </div>
+        </section>
+      ))}
     </div>
   );
 }
