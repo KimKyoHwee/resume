@@ -9,7 +9,7 @@ import ppt6 from "../assets/ppt6.jpg";
 import ppt7 from "../assets/ppt7.jpg";
 import ppt8 from "../assets/ppt8.jpg";
 import ppt9 from "../assets/ppt9.jpg";
-
+//back 도메인 : kyohwee.site
 const images = [
   ppt1, ppt2, ppt3, ppt4, ppt5, ppt6, ppt7, ppt8, ppt9
 ];
