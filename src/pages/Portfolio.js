@@ -35,7 +35,7 @@ const Portfolio = () => {
         }
 
         if (isNaN(requestCount) || requestCount < 1 || requestCount > 50) {
-          alert('요청 수는 1에서 100 사이의 숫자여야 합니다.');
+          alert('요청 수는 1에서 50 사이의 숫자여야 합니다.');
           return;
         }
 
@@ -69,7 +69,68 @@ const Portfolio = () => {
         alert('올바른 선택이 아닙니다. 1번, 2번, 3번 중에서 선택해주세요.');
       }
     } else if (index === 2) {
-      alert('Button on Page 3 clicked! Custom Action for Page 3');
+      let apiNum = prompt('1번(기존 방법), 2번(Fetch Join) 중 선택해주세요:', '1');
+      let userCount = prompt('userCount 값을 입력하세요 (1~10):', '1');
+      let totalRequests = prompt('totalRequests 값을 입력하세요 (1~50):', '1');
+      
+
+      // 숫자 확인 및 제한 적용
+      userCount = parseInt(userCount, 10);
+      totalRequests = parseInt(totalRequests, 10);
+      apiNum = parseInt(apiNum, 10);
+
+      if (isNaN(userCount) || userCount < 1 || userCount > 10) {
+        alert('userCount는 1에서 10 사이의 숫자여야 합니다.');
+        return;
+      }
+
+      if (isNaN(totalRequests) || totalRequests < 1 || totalRequests > 50) {
+        alert('totalRequests는 1에서 50 사이의 숫자여야 합니다.');
+        return;
+      }
+
+      if (isNaN(apiNum) || (apiNum !== 1 && apiNum !== 2)) {
+        alert('apiNum은 1 또는 2여야 합니다.');
+        return;
+      }
+
+      const requestBody = {
+        applicationCreateRequest: {
+          date: "2024-08-19",
+          start_time: "14:00",
+          end_time: "16:00",
+          mentor_id: 2
+        },
+        performanceRequest: {
+          userCount: userCount,
+          totalRequests: totalRequests
+        },
+        apiNum: apiNum
+      };
+
+      setLoading(true); // 로딩 상태 시작
+
+      try {
+        const response = await axios.post(`https://kyohwee.site/api/v1/application`, requestBody, {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiZ29vZ2xlIDEwMTU2NzMyNTI3MTY1Mjk0OTQ2MyIsInJvbGUiOiJST0xFX01FTlRFRSIsImlhdCI6MTcyMzkxNTUzNCwiZXhwIjoxNzUzOTE1NTM0fQ.TakPICIU2fJ5f2zjnji4KSP6_qBXe0sg6fs2LzLWuTE`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        const { averageTimesPerThread, overallAverageTime } = response.data;
+
+        const averageTimesString = averageTimesPerThread.map((time, index) => `스레드 ${index + 1}: ${time}ms`).join('\n');
+        const resultMessage = `요청이 성공했습니다:\n\n스레드별 평균 시간:\n${averageTimesString}\n\n전체 평균 시간: ${overallAverageTime}ms`;
+
+        alert(resultMessage);
+      } catch (error) {
+        console.error(error);
+        alert(`요청이 실패했습니다: ${error.message}`);
+      } finally {
+        setLoading(false); // 로딩 상태 종료
+      }
+      
     } else if (index === 5) {
       alert('Button on Page 6 clicked! Custom Action for Page 6');
     }
