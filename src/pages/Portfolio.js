@@ -132,7 +132,49 @@ const Portfolio = () => {
       }
       
     } else if (index === 5) {
-      alert('Button on Page 6 clicked! Custom Action for Page 6');
+      let apiNum = prompt('1번(비동기 처리 없음), 2번(비동기 처리) 중 선택해주세요:', '1');
+      let email = prompt('이메일을 입력하세요:');
+
+      // 숫자 확인 및 제한 적용
+      apiNum = parseInt(apiNum, 10);
+
+      if (isNaN(apiNum) || (apiNum !== 1 && apiNum !== 2)) {
+        alert('apiNum은 1 또는 2여야 합니다.');
+        return;
+      }
+
+      if (!email) {
+        alert('이메일을 입력해야 합니다.');
+        return;
+      }
+
+      const url = apiNum === 1
+        ? `https://kyohwee.site/api/v1/email/noAsync`
+        : `https://kyohwee.site/api/v1/email/async`;
+
+      setLoading(true); // 로딩 상태 시작
+
+      try {
+        const response = await axios.get(url, {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiZ29vZ2xlIDEwMTU2NzMyNTI3MTY1Mjk0OTQ2MyIsInJvbGUiOiJST0xFX01FTlRFRSIsImlhdCI6MTcyMzkxNTUzNCwiZXhwIjoxNzUzOTE1NTM0fQ.TakPICIU2fJ5f2zjnji4KSP6_qBXe0sg6fs2LzLWuTE`
+          },
+          params: {
+            email: email
+          }
+        });
+
+        const responseTime = response.data; // 서버가 반환하는 Long 타입의 응답 시간
+
+        const resultMessage = `요청이 성공했습니다:\n\n응답 시간: ${responseTime}ms`;
+
+        alert(resultMessage);
+      } catch (error) {
+        console.error(error);
+        alert(`요청이 실패했습니다: ${error.message}`);
+      } finally {
+        setLoading(false); // 로딩 상태 종료
+      }
     }
   }
 
