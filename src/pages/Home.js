@@ -2,6 +2,8 @@ import React from 'react';
 import './Home.css';
 import './Introduction.css'; // 자기소개 페이지 스타일
 import profileImage from "../assets/profile.jpg";
+import architectImage from "../assets/architect.jpg"; // 새로운 이미지 추가
+
 
 const Home = () => {
   const scrollToIntroduction = () => {
@@ -40,8 +42,9 @@ const Home = () => {
 
       {/* 자기소개 페이지 1 */}
       <section className="introduction page-one">
-        <h2>Favorite Quote</h2>
-        <p>"The only limit to our realization of tomorrow is our doubts of today." - Franklin D. Roosevelt</p>
+        <h2>제 개인 PC에서 호스팅한 웹 애플리케이션 서버를 통해 서비스되는 웹사이트입니다.</h2>
+        <h3>좌측 네비게이션바의 포트폴리오 페이지에서 API의 응답속도를 직접 체크하실 수 있습니다.</h3>
+        <img src={architectImage} alt="Architecture" className="architect-image" />
       </section>
 
       {/* 자기소개 페이지 2 */}
