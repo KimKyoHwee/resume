@@ -2,8 +2,8 @@ import React from 'react';
 import './Home.css';
 import './Introduction.css'; // 자기소개 페이지 스타일
 import profileImage from "../assets/profile.jpg";
-import architectImage from "../assets/architect.jpg"; // 새로운 이미지 추가
-
+import architectImage from "../assets/architect.jpg"; // 자기소개 1번 페이지 이미지
+import mailLogicImage from "../assets/mailLogic.jpg"; // 자기소개 2번 페이지 이미지
 
 const Home = () => {
   const scrollToIntroduction = () => {
@@ -28,7 +28,7 @@ const Home = () => {
           </div>
           <div className="sector">
             <h2>Portfolio</h2>
-            <p>제가 작업한 내용들을 확인하시고, 성능을 직접 체크해보실 수 있습니다.</p>
+            <p>페이지 좌측 상단의 "API 성능 측정하기" 버튼으로 직접 체크해보실 수 있습니다.</p>
           </div>
         </div>
         <div className="profile-section">
@@ -43,14 +43,17 @@ const Home = () => {
       {/* 자기소개 페이지 1 */}
       <section className="introduction page-one">
         <h2>제 개인 PC에서 호스팅한 웹 애플리케이션 서버를 통해 서비스되는 웹사이트입니다.</h2>
-        <h3>좌측 네비게이션바의 포트폴리오 페이지에서 API의 응답속도를 직접 체크하실 수 있습니다.</h3>
+        <h3>좌측 네비게이션바의 포트폴리오 페이지에서 API의 응답속도를 직접 테스트하실 수 있습니다.</h3>
         <img src={architectImage} alt="Architecture" className="architect-image" />
       </section>
 
       {/* 자기소개 페이지 2 */}
       <section className="introduction page-two">
-        <h2>About Me</h2>
-        <p>I'm a passionate developer who loves building intuitive and dynamic web applications. With a strong foundation in JavaScript, React, and Node.js, I strive to create user-friendly experiences.</p>
+        <h2>테스팅되는 API는 실제 서비스의 API와 상이합니다.</h2>
+        <p>데이터가 저장 및 수정되는 트랜잭션은 비즈니스 로직에서 제외했습니다.</p>
+        <p>테스팅하실 때, 다중 스레드 작업을 호환하기 위하여 비즈니스 로직을 수정했습니다.</p>
+        <p>예를 들어 커피챗 신청 API는 Lock, 유효성 체크, 데이터 저장 기능을 제외했습니다.</p>
+        <img src={mailLogicImage} alt="Mail Logic" className="mail-logic-image" />
       </section>
 
       {/* 자기소개 페이지 3 */}
