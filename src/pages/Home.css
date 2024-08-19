@@ -1,10 +1,11 @@
-/* src/pages/Home.css */
+/* 기본 설정 */
 body, html {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
   scroll-behavior: smooth;
   height: 100%;
+  overflow-x: hidden;
 }
 
 .home-content {
@@ -13,25 +14,29 @@ body, html {
   background-color: #f5f5f5;
 }
 
-.intro {
-  background-image: url('../assets/background.jpg');
-  background-size: cover;
-  height: 100vh; /* 첫 화면을 전체 화면으로 설정 */
+/* 각 섹션의 높이를 전체 화면 크기로 설정 */
+.intro, .page-one, .page-two, .page-three {
+  height: 100vh; /* 전체 화면 높이 */
   display: flex;
-  justify-content: space-between; /* 섹터와 프로필 섹션을 양쪽에 배치 */
+  justify-content: center;
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
-  margin: 0;
+}
+
+/* Intro 섹션 스타일 */
+.intro {
+  background-image: url('../assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  flex-direction: column; /* 섹터와 프로필 섹션을 세로로 배치 */
 }
 
 .sectors {
   display: flex;
-  flex-direction: column; /* 섹터를 세로로 배치 */
-  justify-content: space-around; /* 각 섹션 간 동일한 간격을 유지 */
-  height: 100%; /* 전체 높이 사용 */
-  width: 40%; /* 섹터들이 화면의 절반을 차지하도록 설정 */
-  margin-left: 1%;
+  flex-direction: row; /* 섹터를 가로로 배치 */
+  justify-content: space-between; /* 각 섹션 간 동일한 간격을 유지 */
+  width: 100%; /* 섹터들이 화면의 전체 너비를 차지하도록 설정 */
 }
 
 .sector {
@@ -42,28 +47,23 @@ body, html {
   align-items: center;
   text-align: center;
   padding: 20px;
-  background-color: transparent;
-  margin: 0; /* 세로 간격 조정을 위해 상하로 여백을 줌 */
-  border-radius: 0;
-  box-shadow: none;
+  margin: 10px; /* 섹터 간의 간격 조정 */
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경으로 텍스트 가독성 향상 */
+  border-radius: 10px;
 }
 
 .sector h2 {
   font-size: 24px;
   color: #f5f5f5;
-  margin: 0;
-  text-align: center; /* 텍스트를 가운데 정렬 */
+  margin-bottom: 10px;
 }
 
 .sector p {
   font-size: 16px;
   color: #f5f5f5;
-  text-align: center;
-  margin-top: 10px; /* 설명 부분을 아래로 배치 */
 }
 
 .profile-section {
-  width: 60%; /* 프로필 섹션이 화면의 절반을 차지 */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,10 +72,11 @@ body, html {
 }
 
 .profile-image {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .profile-section h1 {
@@ -83,26 +84,6 @@ body, html {
   margin-top: 10px;
   color: #f5f5f5;
   white-space: pre-line; /* 줄바꿈을 위한 설정 */
-}
-
-.introduction {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: #f5f5f5;
-  box-sizing: border-box;
-}
-
-.introduction h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-.introduction p {
-  font-size: 18px;
-  text-align: center;
 }
 
 .scroll-button {
@@ -120,4 +101,65 @@ body, html {
 .scroll-button:hover {
   background-color: white; /* 호버 시 배경색 변경 */
   color: #3498db; /* 호버 시 글자색 변경 */
+}
+
+/* Introduction 페이지 스타일 */
+.introduction {
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.page-one, .page-two, .page-three {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.page-one h2, .page-two h2, .page-three h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.page-one h3, .page-two p, .page-three p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  line-height: 1.5; /* 줄 간격 설정 */
+}
+
+/* 자기소개 페이지 2번의 이미지 */
+.mail-logic-image {
+  width: 50%; /* 이미지의 크기를 적절하게 조절 */
+  max-width: 600px;
+  height: auto;
+}
+
+.architect-image {
+  width: 50%; /* 이미지의 크기를 적절하게 조절 */
+  max-width: 600px;
+  height: auto;
+}
+
+/* 연락처 정보 스타일 */
+.contact-info {
+  border: 2px solid #f5f5f5; /* 경계선 색상 설정 */
+  border-radius: 10px; /* 곡률이 들어간 상자 */
+  padding: 20px; /* 상자 안쪽의 여백 */
+  max-width: 400px; /* 상자의 최대 너비 설정 */
+  margin-top: 20px;
+  text-align: center;
+  background-color: transparent; /* 배경색 설정 */
+}
+
+.contact-info span {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #3498db;
+  transition: color 0.3s;
+}
+
+.contact-info span:hover {
+  color: #1d6fa5; /* 호버 시 색상 변경 */
 }
