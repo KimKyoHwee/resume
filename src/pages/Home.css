@@ -141,3 +141,25 @@ body, html {
   max-width: 600px;
   height: auto;
 }
+
+/* 연락처 정보 스타일 */
+.contact-info {
+  border: 2px solid #f5f5f5; /* 경계선 색상 설정 */
+  border-radius: 10px; /* 곡률이 들어간 상자 */
+  padding: 20px; /* 상자 안쪽의 여백 */
+  max-width: 400px; /* 상자의 최대 너비 설정 */
+  margin-top: 20px;
+  text-align: center;
+  background-color: transparent; /* 배경색 설정 */
+}
+
+.contact-info span {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #3498db;
+  transition: color 0.3s;
+}
+
+.contact-info span:hover {
+  color: #1d6fa5; /* 호버 시 색상 변경 */
+}

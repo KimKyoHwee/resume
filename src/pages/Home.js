@@ -13,6 +13,11 @@ const Home = () => {
     }
   };
 
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text);
+    alert(`${text}이(가) 클립보드에 복사되었습니다.`);
+  };
+
   return (
     <div className="home-content">
       {/* 첫 화면 - Intro 섹션 */}
@@ -49,17 +54,21 @@ const Home = () => {
 
       {/* 자기소개 페이지 2 */}
       <section className="introduction page-two">
-        <h2>테스팅되는 API는 실제 서비스의 API와 상이합니다.</h2>
+        <h2>테스팅되는 API는 실제 서비스의 API와 상이합니다</h2>
         <p>데이터가 저장 및 수정되는 트랜잭션은 비즈니스 로직에서 제외했습니다.</p>
-        <p>테스팅하실 때, 다중 스레드 작업을 호환하기 위하여 비즈니스 로직을 수정했습니다.</p>
-        <p>예를 들어 커피챗 신청 API는 Lock, 유효성 체크, 데이터 저장 기능을 제외했습니다.</p>
+        <p>예를 들어 커피챗 신청 API는 Lock, 유효성 체크, 데이터 저장 기능을 제외하였습니다.</p>
         <img src={mailLogicImage} alt="Mail Logic" className="mail-logic-image" />
       </section>
 
       {/* 자기소개 페이지 3 */}
       <section className="introduction page-three">
-        <h2>My Hobbies</h2>
-        <p>I enjoy solving coding challenges, contributing to open-source projects, and staying up-to-date with the latest technologies. In my free time, I also love reading, hiking, and photography.</p>
+        <h2>"There is no silver bullet."<br />- Frederick P. Brooks Jr.</h2>
+        <p>프로그래밍에 정답은 없다고 생각합니다.<br></br> 동료들과 함께 상의하며 최악의 상황에서는 차악을,<br></br> 최고의 상황에서는 최적의 선택을 하겠습니다.</p>
+        <h3>Contact</h3>
+        <p className="contact-info">
+          mail: <span onClick={() => handleCopy('ky0hw00@gmail.com')}>ky0hw00@gmail.com</span><br />
+          phone: <span onClick={() => handleCopy('01029773961')}>010-2977-3961</span>
+        </p>
       </section>
     </div>
   );
