@@ -73,7 +73,7 @@ const Home = () => {
               </a>
             </div>
             <div className="resume-link">
-              <a href="/resume">
+            <a href="https://fuzzy-hose-356.notion.site/1ee34212ee2d42bdbb3c4a258a672612" target="_blank" rel="noopener noreferrer">
                 <h3>Resume</h3>
               </a>
             </div>
