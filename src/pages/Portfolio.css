@@ -43,33 +43,23 @@ body, html {
     box-shadow: none;
 }
 
-.top-left-button,
-.top-right-button {
+.bottom-center-button {
     position: absolute;
-    top: 20px;
+    bottom: 20px; /* 최하단에 배치 */
+    left: 50%;
+    transform: translateX(-50%); /* 중앙 정렬 */
     padding: 10px 20px;
     font-size: 16px;
-    color: black;
+    color: blue;
     background-color: transparent;
-    border: 2px solid black;
+    border: 2px solid blue;
     border-radius: 5px;
     cursor: pointer;
     z-index: 10;
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Action button: 왼쪽에 10% 마진 */
-.top-left-button {
-    left: 6%;
-}
-
-/* Scroll down button: 오른쪽에 10% 마진 */
-.top-right-button {
-    right: 6%;
-}
-
-.top-right-button:hover,
-.top-left-button:hover {
+.bottom-center-button:hover {
     background-color: black;
     color: white;
 }
@@ -87,4 +77,50 @@ body, html {
     padding: 20px;
     border-radius: 10px;
     z-index: 1000;
+}
+
+/* Portfolio.css */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10000;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content label {
+    margin-bottom: 10px;
+}
+
+.modal-content button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-content button:first-of-type {
+    background-color: #3498db;
+    color: white;
+    border: none;
+}
+
+.modal-content button:last-of-type {
+    background-color: #ccc;
+    color: black;
+    border: none;
+}
+
+.modal-text {
+    white-space: pre-line; /* 줄바꿈을 허용 */
+    text-indent: 20px; /* 줄바꿈된 줄에 들여쓰기 적용 */
 }
