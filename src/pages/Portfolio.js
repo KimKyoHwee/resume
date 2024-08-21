@@ -1,25 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Portfolio.css';
-import ppt1 from "../assets/ppt1.jpg";
-import ppt2 from "../assets/ppt2.jpg";
-import ppt3 from "../assets/ppt3.jpg";
-import ppt4 from "../assets/ppt4.jpg";
-import ppt5 from "../assets/ppt5.jpg";
-import ppt6 from "../assets/ppt6.jpg";
-import ppt7 from "../assets/ppt7.jpg";
-import ppt8 from "../assets/ppt8.jpg";
-import ppt9 from "../assets/ppt9.jpg";
+import port1 from "../assets/port1.jpg";
+import port2 from "../assets/port2.jpg";
+import port3 from "../assets/port3.jpg";
+import port4 from "../assets/port4.jpg";
+import port5 from "../assets/port5.jpg";
+import port6 from "../assets/port6.jpg";
+import port7 from "../assets/port7.jpg";
 import axios from 'axios';
 
 const images = [
-  ppt1, ppt2, ppt3, ppt4, ppt5, ppt6, ppt7, ppt8, ppt9
+  port1, port2, port3, port4, port5, port6, port7
 ];
 
 const Portfolio = () => {
   const [loading, setLoading] = useState(false); // 로딩 상태 관리
 
   const handleButtonClick = async (index) => {
-    if (index === 1) {
+    if (index === 0) { // 첫 번째 페이지 (이전 2페이지)
       const choice = prompt('1번(기존 방법), 2번(일반 Join), 3번(Fetch Join) 중 선택해주세요:', '1');
       if (choice === '1' || choice === '2' || choice === '3') {
         let threadCount = prompt('생성할 스레드 수를 입력하세요 (1~10):', '1');
@@ -64,15 +62,14 @@ const Portfolio = () => {
         } finally {
           setLoading(false); // 로딩 상태 종료
         }
-        
+
       } else {
         alert('올바른 선택이 아닙니다. 1번, 2번, 3번 중에서 선택해주세요.');
       }
-    } else if (index === 2) {
+    } else if (index === 1) { // 두 번째 페이지 (이전 3페이지)
       let apiNum = prompt('1번(기존 방법), 2번(Fetch Join) 중 선택해주세요:', '1');
       let userCount = prompt('userCount 값을 입력하세요 (1~10):', '1');
       let totalRequests = prompt('totalRequests 값을 입력하세요 (1~50):', '1');
-      
 
       // 숫자 확인 및 제한 적용
       userCount = parseInt(userCount, 10);
@@ -130,8 +127,8 @@ const Portfolio = () => {
       } finally {
         setLoading(false); // 로딩 상태 종료
       }
-      
-    } else if (index === 5) {
+
+    } else if (index === 4) { // 다섯 번째 페이지 (이전 6페이지)
       let apiNum = prompt('1번(비동기 처리 없음), 2번(비동기 처리) 중 선택해주세요:', '1');
       let email = prompt('이메일을 입력하세요:');
 
@@ -176,7 +173,57 @@ const Portfolio = () => {
         setLoading(false); // 로딩 상태 종료
       }
     }
-  }
+  };
+
+  // 페이지 간 부드러운 이동 및 마우스 위치에 따른 커서 변경 처리
+  const scrollToSection = (direction) => {
+    const sections = document.querySelectorAll('.portfolio-section');
+    let currentIndex = 0;
+
+    sections.forEach((section, index) => {
+      if (section.getBoundingClientRect().top >= 0 && section.getBoundingClientRect().top < window.innerHeight) {
+        currentIndex = index;
+      }
+    });
+
+    if (direction === 'up' && currentIndex > 0) {
+      sections[currentIndex - 1].scrollIntoView({ behavior: 'smooth' });
+    } else if (direction === 'down' && currentIndex < sections.length - 1) {
+      sections[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      const y = event.clientY;
+      const height = window.innerHeight;
+
+      if (y <= height / 2) {
+        document.body.style.cursor = 'n-resize'; // 위로 향하는 커서
+      } else {
+        document.body.style.cursor = 's-resize'; // 아래로 향하는 커서
+      }
+    };
+
+    const handleClick = (event) => {
+      const y = event.clientY;
+      const height = window.innerHeight;
+
+      if (y <= height / 2) {
+        scrollToSection('up');
+      } else {
+        scrollToSection('down');
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('click', handleClick);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('click', handleClick);
+    };
+  }, []);
 
   return (
     <div className="portfolio-content">
@@ -185,8 +232,8 @@ const Portfolio = () => {
         <section key={index} className="portfolio-section">
           <div className="portfolio-image-container">
             <img src={src} alt={`Slide ${index + 1}`} className="portfolio-image" />
-            {/* 왼쪽 상단의 버튼 (2, 3, 6 페이지에만 렌더링) */}
-            {(index === 1 || index === 2 || index === 5) && (
+            {/* 왼쪽 상단의 버튼 (1, 2, 5 페이지에만 렌더링) */}
+            {(index === 0 || index === 1 || index === 4) && (
               <button className="top-left-button" onClick={() => handleButtonClick(index)}>
                 API 성능 측정하기
               </button>
