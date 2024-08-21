@@ -71,13 +71,7 @@ const Portfolio = () => {
         if(apiNumInt===2) api=3;
         if(apiNumInt===3) api=2;
         // 첫 번째 페이지의 API 호출 (API 1)
-        const requestBody = {
-          performanceRequest: {
-            userCount: threadCountInt,
-            totalRequests: requestCountInt
-          },
-          apiNum: api
-        };
+  
 
         response = await axios.get(`https://kyohwee.site/api/v1/mentor/performance/${api}`, {
           headers: {
